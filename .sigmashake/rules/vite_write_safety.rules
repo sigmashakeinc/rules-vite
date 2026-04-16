@@ -5,10 +5,9 @@ rule vite-warn-server-host {
   enabled true
   priority 85
   severity warning
-  ASK write
+  LOG write
   IF path GLOB "**/vite.config.*" AND content CONTAINS "host: true"
   MESSAGE "Setting server.host to true exposes the Vite dev server on the local network. Ensure you are not working on a public or untrusted network, as this allows others to access your development environment."
-  PROMPT "Are you sure you want to expose the Vite server on the network?"
 }
 
 rule vite-warn-fs-strict-false {
